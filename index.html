@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patrick & Bettina — Wedding Get-Together</title>
+  <meta name="description" content="A relaxed wedding get-together for Patrick & Bettina: brunch, coffee & cake, buffet, and dancing." />
+
+  <!-- LOTR-ish typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Lighter, happier, modern-sage palette */
+      --bg: #f6f3ea;        /* parchment */
+      --bg2:#eef3ee;        /* very light sage tint */
+      --card: #ffffffcc;    /* glassy white */
+      --text: #203028;      /* deep sage charcoal */
+      --muted:#4f6156;      /* muted sage */
+      --accent:#b38a3a;     /* warm gold */
+      --accent2:#6f8f7b;    /* sage */
+      --line: rgba(32,48,40,.12);
+      --shadow: 0 12px 30px rgba(0,0,0,.10);
+      --radius: 18px;
+      --max: 980px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --lotr: "Cinzel Decorative", ui-serif, Georgia, serif;
+      --story: "IM Fell English", ui-serif, Georgia, serif;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      color: var(--text);
+      background:
+        radial-gradient(900px 550px at 15% 10%, rgba(179,138,58,.18), transparent 60%),
+        radial-gradient(900px 550px at 85% 25%, rgba(111,143,123,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      font-family: var(--sans);
+      line-height: 1.45;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Subtle rope borders on both sides */
+    body::before,
+    body::after{
+      content:"";
+      position: fixed;
+      top: 0;
+      width: 52px;
+      height: 100vh;
+      opacity: .25;
+      pointer-events: none;
+      background-repeat: repeat-y;
+      background-size: 52px 160px;
+      z-index: 0;
+      filter: saturate(1.05);
+    }
+    body::before{
+      left: 0;
+      background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='52' height='160' viewBox='0 0 52 160'>\
+<rect width='52' height='160' fill='none'/>\
+<path d='M16 0 C40 20, 12 40, 36 60 C10 80, 42 100, 16 120 C40 140, 12 150, 36 160' fill='none' stroke='%236f8f7b' stroke-width='4' stroke-linecap='round'/>\
+<path d='M18 0 C42 20, 14 40, 38 60 C12 80, 44 100, 18 120 C42 140, 14 150, 38 160' fill='none' stroke='%23b38a3a' stroke-width='2' stroke-linecap='round' opacity='.75'/>\
+</svg>");
+    }
+    body::after{
+      right: 0;
+      transform: scaleX(-1);
+      background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='52' height='160' viewBox='0 0 52 160'>\
+<rect width='52' height='160' fill='none'/>\
+<path d='M16 0 C40 20, 12 40, 36 60 C10 80, 42 100, 16 120 C40 140, 12 150, 36 160' fill='none' stroke='%236f8f7b' stroke-width='4' stroke-linecap='round'/>\
+<path d='M18 0 C42 20, 14 40, 38 60 C12 80, 44 100, 18 120 C42 140, 14 150, 38 160' fill='none' stroke='%23b38a3a' stroke-width='2' stroke-linecap='round' opacity='.75'/>\
+</svg>");
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 20px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header{
+      padding: 42px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker{
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h1{
+      font-family: var(--lotr);
+      font-weight: 700;
+      margin: 10px 0 12px;
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.05;
+    }
+
+    .subtitle{
+      max-width: 70ch;
+      color: var(--muted);
+      font-family: var(--story);
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .pillbar{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin: 18px 0 0;
+    }
+    .pill{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.60);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      backdrop-filter: blur(6px);
+    }
+    .pill strong{ color: var(--text); font-weight: 700; }
+
+    main{ padding-top: 26px; }
+
+    section{ margin-top: 22px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      body::before, body::after{ opacity: .16; width: 34px; background-size: 34px 160px; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Carabiner accents (subtle) */
+    .card.gear::before,
+    .card.gear::after{
+      content:"";
+      position:absolute;
+      top: 18px;
+      width: 110px;
+      height: 220px;
+      opacity: .18;
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events:none;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.10));
+    }
+    .card.gear::before{
+      left: -18px;
+      background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='240' viewBox='0 0 120 240'>\
+<path d='M66 22c-18 0-32 14-32 32v44c0 6 5 11 11 11h22c6 0 11-5 11-11V54c0-7 6-13 13-13s13 6 13 13v44c0 22-18 40-40 40H52c-22 0-40-18-40-40V54C12 26 34 4 62 4h8c28 0 50 22 50 50v44c0 38-30 68-68 68H44c-24 0-44-20-44-44v-2h20v2c0 13 11 24 24 24h8c27 0 48-21 48-48V54c0-18-14-32-32-32z' fill='%236f8f7b'/>\
+<path d='M46 98h28v20H46z' fill='%23b38a3a'/>\
+<path d='M52 118h16v88H52z' fill='%236f8f7b' opacity='.75'/>\
+<circle cx='60' cy='214' r='10' fill='%23b38a3a'/>\
+</svg>");
+    }
+    .card.gear::after{
+      right: -18px;
+      transform: scaleX(-1);
+      background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='240' viewBox='0 0 120 240'>\
+<path d='M66 22c-18 0-32 14-32 32v44c0 6 5 11 11 11h22c6 0 11-5 11-11V54c0-7 6-13 13-13s13 6 13 13v44c0 22-18 40-40 40H52c-22 0-40-18-40-40V54C12 26 34 4 62 4h8c28 0 50 22 50 50v44c0 38-30 68-68 68H44c-24 0-44-20-44-44v-2h20v2c0 13 11 24 24 24h8c27 0 48-21 48-48V54c0-18-14-32-32-32z' fill='%236f8f7b'/>\
+<path d='M46 98h28v20H46z' fill='%23b38a3a'/>\
+<path d='M52 118h16v88H52z' fill='%236f8f7b' opacity='.75'/>\
+<circle cx='60' cy='214' r='10' fill='%23b38a3a'/>\
+</svg>");
+    }
+
+    h2{
+      font-family: var(--lotr);
+      font-size: 22px;
+      margin: 2px 0 10px;
+      font-weight: 700;
+    }
+
+    .small{
+      color: var(--muted);
+      font-size: 14px;
+      font-family: var(--story);
+    }
+
+    .timeline{
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      border-left: 2px solid rgba(179,138,58,.35);
+    }
+    .timeline li{
+      padding: 10px 0 10px 14px;
+      border-bottom: 1px solid rgba(32,48,40,.08);
+    }
+    .timeline li:last-child{ border-bottom: none; }
+
+    .time{
+      display:inline-block;
+      min-width: 92px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(111,143,123,.35);
+      color: var(--muted);
+      margin-left: 8px;
+      background: rgba(255,255,255,.45);
+    }
+
+    form{
+      display:grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    label{ font-size: 13px; color: var(--muted); }
+    input, textarea, select{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(32,48,40,.18);
+      background: rgba(255,255,255,.70);
+      color: var(--text);
+      outline: none;
+      font-family: var(--sans);
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(179,138,58,.65);
+      box-shadow: 0 0 0 4px rgba(179,138,58,.16);
+    }
+    textarea{ min-height: 90px; resize: vertical; }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px){
+      .row{ grid-template-columns: 1fr; }
+      .card.gear::before, .card.gear::after{ opacity: .12; }
+    }
+
+    .checks{
+      display:grid;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(32,48,40,.18);
+      background: rgba(255,255,255,.55);
+    }
+    .checks label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--story);
+    }
+    .checks input{ width:auto; margin-top: 3px; }
+
+    .btn{
+      cursor:pointer;
+      border: 1px solid rgba(179,138,58,.55);
+      background: linear-gradient(180deg, rgba(179,138,58,.22), rgba(179,138,58,.10));
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      font-family: var(--lotr);
+    }
+    .btn:hover{ border-color: rgba(179,138,58,.80); }
+
+    .fineprint{
+      font-size: 12px;
+      color: rgba(32,48,40,.70);
+      margin-top: 8px;
+      font-family: var(--story);
+    }
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: rgba(32,48,40,.65);
+      font-size: 12px;
+      font-family: var(--story);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="kicker">Wedding Get-Together</div>
+      <h1>Patrick &amp; Bettina</h1>
+      <p class="subtitle">
+        No traditional program. Just a joyful day together: brunch, coffee &amp; cake, a buffet, and dancing later.
+      </p>
+
+      <div class="pillbar">
+        <div class="pill"><strong>Date:</strong> Saturday, September 26 (update year)</div>
+        <div class="pill"><strong>Theme:</strong> Alpine Tavern Feast • outdoorsy • DIY</div>
+        <div class="pill"><strong>Bring:</strong> a drink to share</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card gear">
+        <h2>The Plan</h2>
+        <p class="small">Adjust times once final. This is a relaxed flow, not a strict timetable.</p>
+
+        <ul class="timeline">
+          <li><span class="time">10:30</span> Brunch together <span class="tag">arrive &amp; settle in</span></li>
+          <li><span class="time">15:00</span> Coffee &amp; cake <span class="tag">hangout time</span></li>
+          <li><span class="time">18:30</span> Buffet dinner <span class="tag">good food, no fuss</span></li>
+          <li><span class="time">21:00</span> Dancing &amp; party <span class="tag">music night</span></li>
+        </ul>
+
+        <section style="margin-top:16px">
+          <h2>Location</h2>
+          <p class="small">
+            They’re renting a house — more “weekend in the mountains” than venue. Add the exact address and travel notes.
+          </p>
+          <p class="small">
+            <strong>Address:</strong> [House Address], [City]<br/>
+            <strong>Parking:</strong> [e.g., on-street / nearby lot]<br/>
+            <strong>Contact:</strong> [Your Name + phone] for day-of questions
+          </p>
+        </section>
+
+        <section style="margin-top:16px">
+          <h2>What to Bring</h2>
+          <p class="small">
+            Please bring <strong>one drink item</strong> to share so we end up with a fun, varied “tavern bar.”
+            Examples: craft beer, red/white wine, prosecco, cider, non-alcoholic options, mixers.
+          </p>
+          <p class="small">
+            If you’re coming only earlier, feel free to bring something lighter (juice, sparkling water, NA beer).
+          </p>
+        </section>
+      </section>
+
+      <section class="card gear">
+        <h2>RSVP &amp; Drink Plan</h2>
+        <p class="small">Reply so we can plan food and timing. Choose your slot(s) and what you’ll bring.</p>
+
+        <!-- Formspree (works on GitHub Pages)
+             1) Create a free Formspree form
+             2) Replace ACTION_URL_HERE with your endpoint, e.g. https://formspree.io/f/abcdwxyz
+        -->
+        <form method="POST" action="ACTION_URL_HERE">
+          <div class="row">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" required placeholder="Full name" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="name@example.com" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="guests">How many people (incl. you)?</label>
+              <select id="guests" name="guests" required>
+                <option value="" disabled selected>Select…</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+              </select>
+            </div>
+            <div>
+              <label for="coming_with">Optional: who are you coming with?</label>
+              <input id="coming_with" name="coming_with" placeholder="e.g., Alex + Sam" />
+            </div>
+          </div>
+
+          <div>
+            <label>When are you coming? (select all that apply)</label>
+            <div class="checks">
+              <label><input type="checkbox" name="timeslot_brunch" value="yes" /> Brunch (morning)</label>
+              <label><input type="checkbox" name="timeslot_cake" value="yes" /> Coffee &amp; cake (afternoon)</label>
+              <label><input type="checkbox" name="timeslot_buffet" value="yes" /> Buffet (evening)</label>
+              <label><input type="checkbox" name="timeslot_dancing" value="yes" /> Dancing/party (late)</label>
+              <label><input type="checkbox" name="timeslot_fullday" value="yes" /> Full day</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="drink_type">What drink are you bringing?</label>
+              <select id="drink_type" name="drink_type" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Beer (craft / lager)</option>
+                <option>Wine (red)</option>
+                <option>Wine (white)</option>
+                <option>Prosecco / sparkling</option>
+                <option>Cider</option>
+                <option>Non-alcoholic (sparkling water/soft)</option>
+                <option>Non-alcoholic (NA beer/NA cocktails)</option>
+                <option>Spirits (shared bottle)</option>
+                <option>Mixers (tonic/ginger/cola)</option>
+                <option>Other (describe below)</option>
+              </select>
+            </div>
+            <div>
+              <label for="drink_amount">How much?</label>
+              <input id="drink_amount" name="drink_amount" required placeholder="e.g., 6 beers / 2 bottles / 1 bottle + mixer" />
+            </div>
+          </div>
+
+          <div>
+            <label for="diet">Dietary notes / allergies (optional)</label>
+            <textarea id="diet" name="dietary_notes" placeholder="e.g., vegetarian, gluten-free, nut allergy"></textarea>
+          </div>
+
+          <div>
+            <label for="notes">Anything else? (arrival time, overnight plans, song requests)</label>
+            <textarea id="notes" name="notes" placeholder="Write any notes here…"></textarea>
+          </div>
+
+          <!-- optional: redirect after submit (Formspree supports this if configured) -->
+          <!-- <input type="hidden" name="_next" value="https://YOURUSERNAME.github.io/Wedding-Patrick-Bettina/thanks.html"> -->
+
+          <button class="btn" type="submit">Send RSVP</button>
+          <div class="fineprint">
+            Used only for planning. If you change your plan later, just submit again.
+          </div>
+        </form>
+
+        <section style="margin-top:16px">
+          <h2>FAQ (starter)</h2>
+          <p class="small">
+            <strong>Dress code:</strong> comfortable “mountain-lodge nice.”<br/>
+            <strong>Gifts:</strong> your presence is the main gift (optional; adjust as desired).<br/>
+            <strong>Music:</strong> rock/metal-friendly, not too heavy — requests welcome.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      Theme: Alpine Tavern Feast (sage + parchment + warm gold). Update address/year/times and connect the RSVP form endpoint.
+    </footer>
+  </div>
+</body>
+</html>
