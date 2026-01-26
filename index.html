@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patrick & Bettina — Wedding Get-Together</title>
+  <meta name="description" content="A relaxed wedding get-together for Patrick & Bettina: brunch, coffee & cake, buffet, and dancing." />
+  <style>
+    :root{
+      --bg: #0f1411;          /* deep forest */
+      --card: #141c17;        /* dark pine */
+      --text: #f2efe7;        /* warm parchment */
+      --muted: #c9c2b3;
+      --accent: #b08d57;      /* brass */
+      --accent2: #7b1f2a;     /* burgundy */
+      --line: rgba(242,239,231,.14);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(900px 550px at 15% 10%, rgba(176,141,87,.18), transparent 60%),
+        radial-gradient(900px 550px at 85% 30%, rgba(123,31,42,.18), transparent 60%),
+        linear-gradient(180deg, #0b0f0d, var(--bg));
+      color: var(--text);
+      line-height: 1.45;
+    }
+    a{ color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(242,239,231,.35); }
+    a:hover{ border-bottom-color: var(--accent); }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 20px 60px; }
+    header{
+      padding: 40px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker{
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    h1{
+      font-family: var(--serif);
+      font-weight: 600;
+      margin: 10px 0 12px;
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.05;
+    }
+    .subtitle{
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+    .pillbar{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin: 18px 0 0;
+    }
+    .pill{
+      border: 1px solid var(--line);
+      background: rgba(20,28,23,.65);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .pill strong{ color: var(--text); font-weight: 600; }
+    main{ padding-top: 26px; }
+    section{ margin-top: 22px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      background: rgba(20,28,23,.74);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+    }
+    h2{
+      font-family: var(--serif);
+      font-size: 22px;
+      margin: 2px 0 10px;
+      font-weight: 600;
+    }
+    .small{ color: var(--muted); font-size: 14px; }
+    .timeline{
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      border-left: 2px solid rgba(176,141,87,.35);
+    }
+    .timeline li{
+      padding: 10px 0 10px 14px;
+      border-bottom: 1px solid rgba(242,239,231,.08);
+    }
+    .timeline li:last-child{ border-bottom: none; }
+    .time{
+      display:inline-block;
+      min-width: 92px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(176,141,87,.35);
+      color: var(--muted);
+      margin-left: 8px;
+    }
+
+    form{
+      display:grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    label{ font-size: 13px; color: var(--muted); }
+    input, textarea, select{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(242,239,231,.18);
+      background: rgba(10,14,12,.55);
+      color: var(--text);
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(176,141,87,.65);
+      box-shadow: 0 0 0 4px rgba(176,141,87,.12);
+    }
+    textarea{ min-height: 90px; resize: vertical; }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px){
+      .row{ grid-template-columns: 1fr; }
+    }
+    .checks{
+      display:grid;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(242,239,231,.18);
+      background: rgba(10,14,12,.35);
+    }
+    .checks label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .checks input{ width:auto; margin-top: 3px; }
+    .btn{
+      cursor:pointer;
+      border: 1px solid rgba(176,141,87,.5);
+      background: linear-gradient(180deg, rgba(176,141,87,.22), rgba(176,141,87,.10));
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .btn:hover{ border-color: rgba(176,141,87,.75); }
+    .fineprint{
+      font-size: 12px;
+      color: rgba(242,239,231,.70);
+      margin-top: 8px;
+    }
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: rgba(242,239,231,.65);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="kicker">Wedding Get-Together</div>
+      <h1>Patrick & Bettina</h1>
+      <p class="subtitle">
+        No traditional program — just a relaxed day of celebrating with friends and family:
+        brunch, coffee & cake, a buffet, and dancing later.
+      </p>
+      <div class="pillbar">
+        <div class="pill"><strong>Date:</strong> Saturday, September 26 (update year)</div>
+        <div class="pill"><strong>Style:</strong> Alpine Tavern Feast • DIY • Outdoorsy</div>
+        <div class="pill"><strong>Bring:</strong> A drink to share (details below)</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>The Plan</h2>
+        <p class="small">Exact times can be adjusted once you confirm the schedule.</p>
+        <ul class="timeline">
+          <li><span class="time">10:30</span> Brunch together <span class="tag">arrive & settle in</span></li>
+          <li><span class="time">15:00</span> Coffee & cake <span class="tag">hangout time</span></li>
+          <li><span class="time">18:30</span> Buffet dinner <span class="tag">good food, no fuss</span></li>
+          <li><span class="time">21:00</span> Dancing & party <span class="tag">music night</span></li>
+        </ul>
+
+        <section style="margin-top:16px">
+          <h2>Location</h2>
+          <p class="small">
+            They’re renting a house (more “weekend getaway” than venue). Add the exact address and any parking/public transport notes here.
+          </p>
+          <p class="small">
+            <strong>Address:</strong> [House Address], [City]<br/>
+            <strong>Parking:</strong> [e.g., on-street / nearby lot]<br/>
+            <strong>Contact:</strong> [Your Name + phone] for day-of questions
+          </p>
+        </section>
+
+        <section style="margin-top:16px">
+          <h2>What to Bring</h2>
+          <p class="small">
+            Please bring <strong>one drink item</strong> to share so we get a fun, varied “tavern bar” for the evening.
+            Examples: craft beer, red/white wine, prosecco, cider, non-alcoholic options, mixers, or a bottle of something you love.
+          </p>
+          <p class="small">
+            Tip: If you’re coming only earlier in the day, feel free to bring something lighter (juice, sparkling water, NA beer).
+          </p>
+        </section>
+      </section>
+
+      <section class="card">
+        <h2>RSVP & Drink Plan</h2>
+        <p class="small">Please reply so we can plan food and timing. Choose the time slot(s) you’ll attend and what you’ll bring.</p>
+
+        <!-- Netlify Forms: works when hosted on Netlify -->
+        <form name="rsvp" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="rsvp" />
+
+          <div class="row">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" required placeholder="Full name" />
+            </div>
+            <div>
+              <label for="email">Email (for confirmations/updates)</label>
+              <input id="email" name="email" type="email" required placeholder="name@example.com" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="guests">How many people are you bringing (incl. you)?</label>
+              <select id="guests" name="guests" required>
+                <option value="" disabled selected>Select…</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+              </select>
+            </div>
+            <div>
+              <label for="relationship">Optional: who are you coming with?</label>
+              <input id="relationship" name="coming_with" placeholder="e.g., Alex + Sam" />
+            </div>
+          </div>
+
+          <div>
+            <label>When are you coming? (select all that apply)</label>
+            <div class="checks">
+              <label><input type="checkbox" name="timeslot" value="Brunch" /> Brunch (morning)</label>
+              <label><input type="checkbox" name="timeslot" value="Coffee & Cake" /> Coffee & cake (afternoon)</label>
+              <label><input type="checkbox" name="timeslot" value="Buffet" /> Buffet (evening)</label>
+              <label><input type="checkbox" name="timeslot" value="Dancing" /> Dancing/party (late)</label>
+              <label><input type="checkbox" name="timeslot" value="Full day" /> Full day</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="drink_type">What drink are you bringing?</label>
+              <select id="drink_type" name="drink_type" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Beer (craft / lager)</option>
+                <option>Wine (red)</option>
+                <option>Wine (white)</option>
+                <option>Prosecco / sparkling</option>
+                <option>Cider</option>
+                <option>Non-alcoholic (sparkling water/soft)</option>
+                <option>Non-alcoholic (NA beer/NA cocktails)</option>
+                <option>Spirits (shared bottle)</option>
+                <option>Mixers (tonic/ginger/cola)</option>
+                <option>Other (describe below)</option>
+              </select>
+            </div>
+            <div>
+              <label for="drink_amount">How much?</label>
+              <input id="drink_amount" name="drink_amount" required placeholder="e.g., 6 beers / 2 bottles / 1 bottle + mixer" />
+            </div>
+          </div>
+
+          <div>
+            <label for="diet">Dietary notes / allergies (optional)</label>
+            <textarea id="diet" name="dietary_notes" placeholder="e.g., vegetarian, gluten-free, nut allergy"></textarea>
+          </div>
+
+          <div>
+            <label for="notes">Anything else? (arrival time, overnight plans, song requests)</label>
+            <textarea id="notes" name="notes" placeholder="Write any notes here…"></textarea>
+          </div>
+
+          <button class="btn" type="submit">Send RSVP</button>
+          <div class="fineprint">
+            Your info is used only for planning this celebration.
+          </div>
+        </form>
+
+        <section style="margin-top:16px">
+          <h2>FAQ (starter)</h2>
+          <p class="small">
+            <strong>Dress code:</strong> comfortable, “nice casual” — think mountain lodge dinner.<br/>
+            <strong>Gifts:</strong> your presence is the main gift (optional line you can adjust).<br/>
+            <strong>Music:</strong> rock/metal-friendly, not too heavy — requests welcome.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      DIY Alpine Tavern Feast theme. Update address/times and optionally add a map link.
+    </footer>
+  </div>
+</body>
+</html>
