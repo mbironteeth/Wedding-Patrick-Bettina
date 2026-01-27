@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Patrick & Bettina — A Gathering</title>
+<meta name="description" content="A relaxed wedding gathering: food, friends, music, and mountain souls.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#fbf6ec;
+  --paper-dark:#f1e7d3;
+
+  --gold:#c9a24d;
+  --gold-soft:#e7cf8a;
+  --sage:#7f9a8a;
+
+  --ink:#2e3b33;
+  --muted:#5f6f66;
+
+  --line:rgba(46,59,51,.18);
+  --shadow:0 14px 34px rgba(0,0,0,.12);
+
+  --lotr:"Cinzel Decorative", serif;
+  --story:"IM Fell English", serif;
+  --ui: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --radius:22px;
+  --max: 980px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  color:var(--ink);
+  font-family: var(--ui);
+  line-height:1.45;
+
+  background:
+    radial-gradient(800px 500px at 10% 5%, rgba(201,162,77,.26), transparent 60%),
+    radial-gradient(800px 500px at 90% 25%, rgba(127,154,138,.18), transparent 60%),
+    linear-gradient(180deg, var(--paper), var(--paper-dark));
+
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Subtle parchment texture overlay */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'>\
+<filter id='n'>\
+  <feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/>\
+  <feColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .10 0'/>\
+</filter>\
+<rect width='900' height='900' filter='url(%23n)'/>\
+</svg>");
+  mix-blend-mode:multiply;
+  z-index:0;
+}
+
+/* Rope borders */
+body::after{
+  content:"";
+  position:fixed;
+  top:0; left:0; right:0;
+  height:100vh;
+  pointer-events:none;
+  z-index:1;
+  background:
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='140'>\
+<path d='M10 0 C30 20, 10 40, 30 60 C10 80, 30 100, 10 120 C30 140, 10 160' fill='none' stroke='%23c9a24d' stroke-width='4'/>\
+<path d='M14 0 C34 20, 14 40, 34 60 C14 80, 34 100, 14 120 C34 140, 14 160' fill='none' stroke='%237f9a8a' stroke-width='2' opacity='.8'/>\
+</svg>") repeat-y left / 44px 140px,
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='140'>\
+<path d='M10 0 C30 20, 10 40, 30 60 C10 80, 30 100, 10 120 C30 140, 10 160' fill='none' stroke='%23c9a24d' stroke-width='4'/>\
+<path d='M14 0 C34 20, 14 40, 34 60 C14 80, 34 100, 14 120 C34 140, 14 160' fill='none' stroke='%237f9a8a' stroke-width='2' opacity='.8'/>\
+</svg>") repeat-y right / 44px 140px;
+  opacity:.35;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:32px 20px 70px;
+  position:relative;
+  z-index:2;
+}
+
+/* --- Subtle animations --- */
+@keyframes parchmentFade {
+  from { opacity:0; transform: translateY(10px); filter: blur(.6px); }
+  to   { opacity:1; transform: translateY(0);  filter: blur(0); }
+}
+
+/* torchlight = slow moving warm glow */
+@keyframes torchlight {
+  0%   { transform: translate(-12%, -8%) scale(1);   opacity:.28; }
+  50%  { transform: translate(10%,  6%) scale(1.06); opacity:.22; }
+  100% { transform: translate(-12%, -8%) scale(1);   opacity:.28; }
+}
+
+/* cards fade in one by one */
+.reveal {
+  opacity:0;
+  animation: parchmentFade .9s ease-out forwards;
+}
+.reveal.d1{ animation-delay: .10s; }
+.reveal.d2{ animation-delay: .22s; }
+.reveal.d3{ animation-delay: .34s; }
+.reveal.d4{ animation-delay: .46s; }
+
+/* Respect accessibility */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ animation:none; opacity:1; }
+  .torch{ display:none; }
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:44px 0 26px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+
+/* ornamental rule */
+header::after{
+  content:"";
+  display:block;
+  height:18px;
+  margin:18px auto 0;
+  opacity:.55;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: min(520px, 92vw) 18px;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='520' height='18' viewBox='0 0 520 18'>\
+<path d='M10 9h150' stroke='%23c9a24d' stroke-width='2' stroke-linecap='round'/>\
+<path d='M360 9h150' stroke='%23c9a24d' stroke-width='2' stroke-linecap='round'/>\
+<path d='M182 9c20-10 40-10 60 0c20 10 40 10 60 0' fill='none' stroke='%237f9a8a' stroke-width='2' stroke-linecap='round'/>\
+<circle cx='260' cy='9' r='4.2' fill='%23e7cf8a'/>\
+</svg>");
+}
+
+.kicker{
+  font-family:var(--story);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-size:12px;
+}
+
+h1{
+  font-family:var(--lotr);
+  font-size:clamp(38px,6vw,64px);
+  margin:14px 0 10px;
+  color:var(--ink);
+}
+
+.subtitle{
+  font-family:var(--story);
+  font-size:20px;
+  max-width:62ch;
+  margin:0 auto 12px;
+  color:var(--muted);
+}
+
+.pills{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.pill{
+  border:1px solid rgba(46,59,51,.16);
+  background: rgba(255,255,255,.66);
+  padding:9px 12px;
+  border-radius:999px;
+  font-size:13px;
+  color:var(--muted);
+  backdrop-filter: blur(6px);
+}
+.pill strong{ color:var(--ink); font-weight:800; }
+
+/* Layout */
+.grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:start;
+  margin-top:24px;
+}
+@media(max-width:860px){
+  .grid{ grid-template-columns:1fr; }
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.56));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Torchlight glow layers inside cards */
+.card .torch{
+  position:absolute;
+  inset:-40%;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(closest-side at 30% 35%, rgba(231,207,138,.55), transparent 65%),
+    radial-gradient(closest-side at 70% 55%, rgba(201,162,77,.40), transparent 68%);
+  filter: blur(14px);
+  animation: torchlight 9s ease-in-out infinite;
+}
+
+/* Topo-line overlay */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  opacity:.10;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='700' height='400' viewBox='0 0 700 400'>\
+<path d='M30 90c120-70 240 90 360 20s210-10 280 60' fill='none' stroke='%237f9a8a' stroke-width='2' opacity='.9'/>\
+<path d='M10 160c140-60 220 60 360 10s220 40 320 90' fill='none' stroke='%23c9a24d' stroke-width='2' opacity='.85'/>\
+<path d='M40 230c130-50 240 20 350-10s170 40 260 80' fill='none' stroke='%235f6f66' stroke-width='2' opacity='.7'/>\
+</svg>");
+  background-repeat: repeat;
+  transform: rotate(-2deg);
+}
+
+/* Carabiner stamp */
+.card::before{
+  content:"";
+  position:absolute;
+  top:-14px; right:-14px;
+  width:120px; height:220px;
+  opacity:.17;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 240'>\
+<path d='M70 20c-18 0-32 14-32 32v50c0 6 5 11 11 11h22c6 0 11-5 11-11V52c0-7 6-13 13-13s13 6 13 13v50c0 22-18 40-40 40H54c-22 0-40-18-40-40V52C14 26 36 4 64 4h10c28 0 50 22 50 50v48c0 38-30 68-68 68H44c-24 0-44-20-44-44v-2h18v2c0 13 11 24 24 24h12c27 0 48-21 48-48V54c0-18-14-32-32-32z' fill='%23c9a24d'/>\
+</svg>");
+}
+
+.card > *{ position:relative; z-index:1; }
+.card h2{
+  font-family:var(--lotr);
+  font-size:24px;
+  margin:0 0 10px;
+}
+.card p, .card li, label{
+  font-family:var(--story);
+  font-size:17px;
+}
+
+.timeline{
+  list-style:none;
+  padding:0;
+  margin:12px 0 0;
+  border-left:3px solid var(--gold);
+}
+.timeline li{ padding:10px 0 10px 14px; }
+.time{
+  color:var(--gold);
+  font-weight:700;
+  min-width:92px;
+  display:inline-block;
+  font-family: var(--ui);
+  letter-spacing:.01em;
+}
+
+small, .muted{ color: var(--muted); }
+
+/* Form */
+input, textarea, select{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.74);
+  font-family:var(--story);
+  font-size:16px;
+}
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media(max-width:700px){
+  .row{ grid-template-columns:1fr; }
+}
+
+.checks{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px 12px;
+  background: rgba(255,255,255,.55);
+  display:grid;
+  gap:8px;
+}
+.checks label{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.checks input{ margin-top:4px; }
+
+button{
+  margin-top:10px;
+  background:linear-gradient(180deg, var(--gold-soft), var(--gold));
+  border:1px solid rgba(46,59,51,.12);
+  border-radius:14px;
+  padding:14px;
+  font-family:var(--lotr);
+  font-size:16px;
+  cursor:pointer;
+  color:#3b2f16;
+}
+button:hover{ filter: brightness(1.02); }
+
+footer{
+  margin-top:40px;
+  text-align:center;
+  font-family:var(--story);
+  color:var(--muted);
+}
+
+/* Map styles */
+.map-wrap{
+  margin-top:10px;
+  border:1px solid rgba(46,59,51,.18);
+  border-radius:16px;
+  overflow:hidden;
+  background: rgba(255,255,255,.48);
+}
+.map-caption{
+  padding:10px 12px;
+  border-top:1px solid rgba(46,59,51,.14);
+  font-family:var(--story);
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header class="reveal d1">
+  <div class="kicker">A Wedding Gathering</div>
+  <h1>Patrick &amp; Bettina</h1>
+  <p class="subtitle">
+    No ceremony, no rules. Just a long day of food, laughter, music, and mountain souls.
+  </p>
+
+  <div class="pills">
+    <div class="pill"><strong>Date:</strong> Saturday, September 26 (update year)</div>
+    <div class="pill"><strong>Vibe:</strong> Alpine tavern • DIY • outdoorsy</div>
+    <div class="pill"><strong>Bring:</strong> one drink to share</div>
+  </div>
+</header>
+
+<main class="grid">
+
+  <section class="card reveal d2">
+    <div class="torch"></div>
+    <h2>The Day</h2>
+    <ul class="timeline">
+      <li><span class="time">Morning</span> Brunch &amp; arriving</li>
+      <li><span class="time">Afternoon</span> Coffee, cake &amp; wandering conversations</li>
+      <li><span class="time">Evening</span> Buffet, wine, firelight</li>
+      <li><span class="time">Night</span> Dancing &amp; music</li>
+    </ul>
+    <p class="muted" style="margin-top:10px;">
+      Choose the parts you can join — this is a come-and-go celebration.
+    </p>
+  </section>
+
+  <section class="card reveal d3">
+    <div class="torch"></div>
+    <h2>RSVP</h2>
+    <p>Let us know when you’ll join and what you’ll bring.</p>
+
+    <!-- Replace ACTION_URL_HERE with your Formspree endpoint -->
+    <form method="POST" action="ACTION_URL_HERE">
+      <div class="row">
+        <input name="name" placeholder="Your name" required>
+        <input name="email" type="email" placeholder="Email" required>
+      </div>
+
+      <label style="display:block; margin-top:10px;">How many people (incl. you)?</label>
+      <select name="guests" required>
+        <option value="" disabled selected>Select…</option>
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+      </select>
+
+      <label style="display:block; margin-top:10px;">When will you join? (select all that apply)</label>
+      <div class="checks">
+        <label><input type="checkbox" name="timeslot_brunch" value="yes"> Brunch (morning)</label>
+        <label><input type="checkbox" name="timeslot_cake" value="yes"> Coffee &amp; cake (afternoon)</label>
+        <label><input type="checkbox" name="timeslot_buffet" value="yes"> Buffet (evening)</label>
+        <label><input type="checkbox" name="timeslot_dancing" value="yes"> Dancing (night)</label>
+        <label><input type="checkbox" name="timeslot_fullday" value="yes"> Full day</label>
+      </div>
+
+      <div class="row" style="margin-top:10px;">
+        <div>
+          <label>What drink will you bring?</label>
+          <input name="drink" placeholder="e.g., 6 craft beers, 2 bottles white wine…" required>
+        </div>
+        <div>
+          <label>Alcohol-free option?</label>
+          <select name="na_option">
+            <option value="" selected>Optional</option>
+            <option>Yes, I’ll bring something NA too</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+
+      <label style="display:block; margin-top:10px;">Dietary notes (optional)</label>
+      <textarea name="dietary_notes" placeholder="e.g., vegetarian, gluten-free, nut allergy"></textarea>
+
+      <label style="display:block; margin-top:10px;">Notes (optional)</label>
+      <textarea name="notes" placeholder="Arrival time, overnight plans, song requests…"></textarea>
+
+      <button type="submit">Send Word</button>
+      <p class="muted" style="margin:8px 0 0; font-size:14px;">
+        Used only for planning. If plans change, submit again.
+      </p>
+    </form>
+  </section>
+
+  <section class="card reveal d4">
+    <div class="torch"></div>
+    <h2>Map of the Realm (example)</h2>
+    <p class="muted">
+      Venue isn’t confirmed yet — this is a placeholder “There &amp; Back Again” map. Once you have the house address, we’ll swap the labels and layout.
+    </p>
+
+    <div class="map-wrap">
+      <!-- Example LOTR-ish map SVG -->
+      <svg viewBox="0 0 900 460" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example fantasy map">
+        <defs>
+          <filter id="paperEdge">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" />
+            <feDisplacementMap in="SourceGraphic" scale="6" />
+          </filter>
+        </defs>
+
+        <!-- parchment base -->
+        <rect x="0" y="0" width="900" height="460" fill="#f7eed9"/>
+        <rect x="18" y="18" width="864" height="424" fill="none" stroke="#c9a24d" stroke-width="3" opacity=".65"/>
+
+        <!-- mountains -->
+        <g opacity=".65" stroke="#2e3b33" fill="none" stroke-width="2">
+          <path d="M120 280l40-90l40 90z"/>
+          <path d="M170 290l50-120l50 120z"/>
+          <path d="M240 295l55-140l55 140z"/>
+          <path d="M320 300l45-110l45 110z"/>
+        </g>
+
+        <!-- forest -->
+        <g opacity=".55" fill="#7f9a8a">
+          <path d="M640 300l18-44l18 44z"/>
+          <path d="M675 312l18-44l18 44z"/>
+          <path d="M710 304l18-44l18 44z"/>
+          <path d="M745 315l18-44l18 44z"/>
+          <path d="M780 306l18-44l18 44z"/>
+        </g>
+
+        <!-- river -->
+        <path d="M40 90c140 70 170 40 260 80s170 120 310 120s210-40 250-10"
+              fill="none" stroke="#7f9a8a" stroke-width="6" opacity=".55" stroke-linecap="round"/>
+
+        <!-- trail / route -->
+        <path d="M90 390c120-60 220-40 310-90s180-60 260-150"
+              fill="none" stroke="#c9a24d" stroke-width="4" opacity=".75" stroke-dasharray="8 8" stroke-linecap="round"/>
+
+        <!-- icons -->
+        <!-- house -->
+        <g transform="translate(520 220)" opacity=".85" stroke="#2e3b33" stroke-width="3" fill="none">
+          <path d="M0 40V10l35-30l35 30v30z"/>
+          <path d="M25 40V22h20v18z"/>
+        </g>
+
+        <!-- carabiner marker -->
+        <g transform="translate(410 312)" opacity=".75" fill="#c9a24d">
+          <path d="M40 10c-10 0-18 8-18 18v26c0 4 3 7 7 7h12c4 0 7-3 7-7V28c0-4 4-8 8-8s8 4 8 8v26c0 12-10 22-22 22H34c-12 0-22-10-22-22V28C12 14 23 3 37 3h6c14 0 25 11 25 25v26c0 18-14 32-32 32H28c-10 0-18-8-18-18v-1h10v1c0 5 4 8 8 8h8c12 0 22-10 22-22V28c0-10-8-18-18-18z"/>
+        </g>
+
+        <!-- Labels -->
+        <g font-family="IM Fell English, serif" font-size="24" fill="#2e3b33" opacity=".88">
+          <text x="520" y="210">The House (Venue)</text>
+          <text x="58" y="72">The River of Refreshments</text>
+          <text x="106" y="330">The Crags</text>
+          <text x="660" y="350">Pinewood</text>
+          <text x="360" y="430">The Trail of Guests</text>
+        </g>
+
+        <!-- little compass -->
+        <g transform="translate(800 70)" opacity=".7" stroke="#2e3b33" stroke-width="2" fill="none">
+          <circle cx="0" cy="0" r="28"/>
+          <path d="M0-22V22M-22 0H22"/>
+          <path d="M0-28l6 12h-12z" fill="#c9a24d" stroke="none"/>
+          <text x="-6" y="-40" font-size="18" fill="#2e3b33" font-family="IM Fell English, serif">N</text>
+        </g>
+      </svg>
+
+      <div class="map-caption">
+        <strong>How we’ll use this later:</strong> replace “The House (Venue)” with the real address + add a Google Maps link below.
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:10px;">
+      Want it even more Tolkien? We can add “stamps” like <em>Brunch Hall</em>, <em>Dance Floor</em>, <em>Buffet Table</em>, and a tiny “quest route”.
+    </p>
+  </section>
+
+</main>
+
+<footer class="reveal d4">
+  “All we have to decide is what to do with the time that is given us.”
+</footer>
+
+</div>
+</body>
+</html>
