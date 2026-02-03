@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Patrick & Bettina — A Gathering</title>
+<meta name="description" content="A relaxed wedding gathering: food, friends, music, and mountain souls.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ========= VARIABLES ========= */
+:root{
+  --paper:#fbf6ec;
+  --paper-dark:#f1e7d3;
+  --gold:#c9a24d;
+  --gold-soft:#e7cf8a;
+  --sage:#7f9a8a;
+  --ink:#2e3b33;
+  --muted:#5f6f66;
+  --line:rgba(46,59,51,.18);
+  --shadow:0 14px 34px rgba(0,0,0,.12);
+
+  --lotr:"Cinzel Decorative", serif;
+  --story:"IM Fell English", serif;
+  --ui: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --radius:22px;
+  --max:980px;
+}
+
+/* ========= BASE ========= */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:var(--ui);
+  line-height:1.45;
+  background:
+    radial-gradient(800px 500px at 10% 5%, rgba(201,162,77,.26), transparent 60%),
+    radial-gradient(800px 500px at 90% 25%, rgba(127,154,138,.18), transparent 60%),
+    linear-gradient(180deg, var(--paper), var(--paper-dark));
+  overflow-x:hidden;
+}
+
+/* parchment texture */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2'/></filter>\
+<rect width='900' height='900' filter='url(%23n)'/>\
+</svg>");
+  mix-blend-mode:multiply;
+}
+
+/* rope borders */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    url(\"data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='140'>\
+<path d='M10 0 C30 20,10 40,30 60 C10 80,30 100,10 120' fill='none' stroke='%23c9a24d' stroke-width='4'/>\
+<path d='M14 0 C34 20,14 40,34 60 C14 80,34 100,14 120' fill='none' stroke='%237f9a8a' stroke-width='2' opacity='.8'/>\
+</svg>\") repeat-y left / 44px 140px,
+    url(\"data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='44' height='140'>\
+<path d='M10 0 C30 20,10 40,30 60 C10 80,30 100,10 120' fill='none' stroke='%23c9a24d' stroke-width='4'/>\
+<path d='M14 0 C34 20,14 40,34 60 C14 80,34 100,14 120' fill='none' stroke='%237f9a8a' stroke-width='2' opacity='.8'/>\
+</svg>\") repeat-y right / 44px 140px;
+  opacity:.35;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:36px 20px 80px;
+  position:relative;
+}
+
+/* ========= ANIMATIONS ========= */
+@keyframes floaty{
+  0%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-8px) rotate(1deg)}
+  100%{transform:translateY(0) rotate(-1deg)}
+}
+
+/* ========= HEADER ========= */
+header{
+  text-align:center;
+  padding:48px 0 28px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+
+h1{
+  font-family:var(--lotr);
+  font-size:clamp(40px,6vw,66px);
+  margin:14px 0 10px;
+}
+.subtitle{
+  font-family:var(--story);
+  font-size:20px;
+  color:var(--muted);
+  max-width:62ch;
+  margin:auto;
+}
+
+/* ========= AVATARS ========= */
+.avatar{
+  position:absolute;
+  width:140px;
+  aspect-ratio:1/1;
+  border-radius:22px;
+  border:1px solid rgba(46,59,51,.14);
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+  background-image:url("avatars.PNG");
+  background-size:200% 200%;
+  background-repeat:no-repeat;
+  animation:floaty 6.5s ease-in-out infinite;
+}
+
+.a-toast{background-position:0% 0%}
+.a-dance{background-position:100% 0%}
+.a-picnic{background-position:0% 100%}
+.a-walk{background-position:100% 100%}
+
+header .av-left{left:-10px; top:18px; transform:rotate(-5deg)}
+header .av-right{right:-10px; top:18px; transform:rotate(5deg)}
+
+@media(max-width:760px){
+  .avatar{display:none}
+}
+
+/* ========= CONTENT ========= */
+section{ margin-top:26px; }
+
+.card{
+  background:rgba(255,255,255,.75);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+
+.card h2{
+  font-family:var(--lotr);
+  margin-top:0;
+}
+
+/* ========= MAP ========= */
+.map{
+  margin-top:10px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#f7eed9;
+}
+
+/* ========= FOOTER ========= */
+footer{
+  margin-top:50px;
+  text-align:center;
+  font-family:var(--story);
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="avatar a-toast av-left"></div>
+  <div class="avatar a-dance av-right"></div>
+
+  <h1>Patrick &amp; Bettina</h1>
+  <p class="subtitle">
+    No ceremony, no rules.  
+    Just a long day of food, laughter, music, and mountain souls.
+  </p>
+</header>
+
+<section class="card">
+  <h2>The Day</h2>
+  <p>Brunch · Coffee & Cake · Buffet · Dancing</p>
+</section>
+
+<section class="card">
+  <h2>What to Bring</h2>
+  <p>Please bring one drink to share — beer, wine, cider or something non-alcoholic.</p>
+</section>
+
+<section class="card">
+  <h2>Map of the Realm (example)</h2>
+  <p class="subtitle">Venue to be confirmed — fantasy placeholder for now.</p>
+  <div class="map">
+    <svg viewBox="0 0 900 400" width="100%" height="auto">
+      <rect width="900" height="400" fill="#f7eed9"/>
+      <path d="M50 80c200 60 300 40 450 140s250 80 350 40"
+            fill="none" stroke="#7f9a8a" stroke-width="6"/>
+      <path d="M100 350c200-80 300-60 420-160s200-120 300-220"
+            fill="none" stroke="#c9a24d" stroke-width="4" stroke-dasharray="8 8"/>
+      <text x="420" y="190" font-family="IM Fell English" font-size="26">The House (Venue)</text>
+    </svg>
+  </div>
+</section>
+
+<footer>
+  “All we have to decide is what to do with the time that is given us.”
+</footer>
+
+</div>
+</body>
+</html>
