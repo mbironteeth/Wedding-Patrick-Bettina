@@ -393,6 +393,67 @@
       color:rgba(46,59,51,.70);
       font-size:14px;
     }
+    /* magical map container */
+
+.map-magic{
+  position:relative;
+  display:inline-block;
+  animation:mapReveal 1.8s ease-out;
+}
+
+/* parchment reveal */
+
+@keyframes mapReveal{
+  from{
+    opacity:0;
+    transform:translateY(10px) scale(.98);
+    filter:blur(3px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+/* torch glow */
+
+.map-magic::before{
+  content:"";
+  position:absolute;
+  inset:-30px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,200,120,.25), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,180,90,.2), transparent 60%);
+  filter:blur(20px);
+  animation:torchFlicker 6s infinite ease-in-out;
+}
+
+@keyframes torchFlicker{
+  0%{opacity:.25;}
+  50%{opacity:.4;}
+  100%{opacity:.25;}
+}
+
+/* subtle sparkles */
+
+.map-magic::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 2px);
+  background-size:120px 120px;
+  opacity:.15;
+  animation:sparkleDrift 30s linear infinite;
+}
+
+@keyframes sparkleDrift{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120px);}
+}
   </style>
 </head>
 
@@ -439,7 +500,7 @@
 
       <section class="card reveal d3">
         <div class="torch"></div>
-        <div class="avatar a-toast av-bl" aria-hidden="true"></div>
+      
 
         <h2>RSVP </h2>
         <p class="small">Sagt uns, wann ihr mitfeiern wollt – damit wir wie verantwortungsvolle Erwachsene planen können.</p>
@@ -522,9 +583,12 @@
   </p>
 
    <div style="margin-top:18px; text-align:center;">
+    <div class="map-magic">
     <img 
       src="map-tscherwald.png" 
       alt="Map to Tscherwald"
+       >
+    </div>
       style="width:100%; max-width:900px; border-radius:16px; box-shadow:0 14px 40px rgba(0,0,0,.25);"
     >
   </div>
