@@ -407,7 +407,7 @@
 
       <h1>Patrick &amp; Bettina</h1>
       <p class="subtitle">
-        No ceremony. No awkward traditions. Just a long, happy day with our favourite humans —
+        A long, happy day with our favourite humans —
         good food, good drinks, and a proper dancefloor moment.
       </p>
 
@@ -425,17 +425,17 @@
         <div class="torch"></div>
         <div class="avatar a-walk av-tr" aria-hidden="true"></div>
 
-        <h2>The Plan</h2>
-        <p class="small">It’s a gathering, not a schedule prison — but here’s the general flow:</p>
+        <h2>Ablauf</h2>
+        <p class="small">Das Ganze ist ein gemütliches Zusammenkommen, kein schedule prison – und wahrscheinlich kommt am Schluss eh alles anders : </p>
         <ul class="timeline">
-          <li><span class="time">10:30</span> Brunch &amp; arrivals <span class="tag">coffee + chaos</span></li>
-          <li><span class="time">15:00</span> Coffee &amp; cake <span class="tag">peak gossip hours</span></li>
-          <li><span class="time">18:30</span> Buffet dinner <span class="tag">no fuss, all yum</span></li>
-          <li><span class="time">21:00</span> Dancing &amp; party <span class="tag">rock/metal-friendly</span></li>
+          <li><span class="time">11:00</span> Apéro &amp; Snacks <span class="tag">man munkelt Bowle und Foodtruck</span></li>
+          <li><span class="time">14:00</span> Kaffee &amp; Kuchen <span class="tag">Tratsch und Süsses </span></li>
+          <li><span class="time">17:00</span> Silent Rave <span class="tag">Tanzflächen-Eskalation </span></li>
+          <li><span class="time">20:00</span> Food &amp; Chill <span class="tag">Imagine Festival-Evening am Zeltplatz </span></li>
         </ul>
 
         <p class="small" style="margin-top:12px;">
-          Come for one chapter or stay for the whole quest.
+          Kommt für ein Kapitel vorbei oder begleitet uns bis in die Nacht
         </p>
       </section>
 
@@ -443,15 +443,15 @@
         <div class="torch"></div>
         <div class="avatar a-toast av-bl" aria-hidden="true"></div>
 
-        <h2>RSVP &amp; Drink Quest</h2>
-        <p class="small">Tell us when you’re joining and what you’re bringing so we can plan like responsible adults (barely).</p>
+        <h2>RSVP </h2>
+        <p class="small">Sagt uns kurz, wann ihr ungefähr da seid – damit wir wie verantwortungsvolle Erwachsene planen können (barely).</p>
 
         <!-- GitHub Pages note: replace ACTION_URL_HERE with your Formspree endpoint -->
         <form method="POST" action="ACTION_URL_HERE">
           <div class="row">
             <div>
-              <label for="name">Your name</label>
-              <input id="name" name="name" required placeholder="Full name" />
+              <label for="name">Your Name </label>
+              <input id="name" name="name" required placeholder="Name" />
             </div>
             <div>
               <label for="email">Email</label>
@@ -461,65 +461,53 @@
 
           <div class="row">
             <div>
-              <label for="guests">How many people (incl. you)?</label>
-              <select id="guests" name="guests" required>
+              <label for="guests">Wie viele seid ihr?</label>
+              <select id="guests" name="Gäste" required>
                 <option value="" disabled selected>Select…</option>
                 <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
               </select>
             </div>
-            <div>
-              <label for="coming_with">Optional: who are you coming with?</label>
-              <input id="coming_with" name="coming_with" placeholder="e.g., Alex + Sam" />
-            </div>
           </div>
 
           <div>
-            <label>When are you coming? (select all that apply)</label>
+            <label>Wann seid ihr dabei (wählt alle Zutreffenden)</label>
             <div class="checks">
-              <label><input type="checkbox" name="timeslot_brunch" value="yes" /> Brunch (morning)</label>
-              <label><input type="checkbox" name="timeslot_cake" value="yes" /> Coffee &amp; cake (afternoon)</label>
-              <label><input type="checkbox" name="timeslot_buffet" value="yes" /> Buffet (evening)</label>
-              <label><input type="checkbox" name="timeslot_dancing" value="yes" /> Dancing/party (night)</label>
-              <label><input type="checkbox" name="timeslot_fullday" value="yes" /> Full day</label>
+              <label><input type="checkbox" name="timeslot_brunch" value="yes" /> Apéro &amp; Mittagessen</label>
+              <label><input type="checkbox" name="timeslot_cake" value="yes" /> Kaffe &amp; Kuchen </label>
+              <label><input type="checkbox" name="timeslot_buffet" value="yes" /> Silent Rave</label>
+              <label><input type="checkbox" name="timeslot_dancing" value="yes" /> Food &amp Chill </label>
+              <label><input type="checkbox" name="timeslot_fullday" value="yes" /> Ganzer Tag, was denn sonst? </label>
             </div>
           </div>
 
           <div class="row">
             <div>
-              <label for="drink_type">What drink are you bringing?</label>
+              <label for="drink_type">Wer mag uns beim Desserbuffet oder unserer Bar aushelfen?</label>
               <select id="drink_type" name="drink_type" required>
                 <option value="" disabled selected>Select…</option>
-                <option>Beer (craft / lager)</option>
-                <option>Wine (red)</option>
-                <option>Wine (white)</option>
-                <option>Prosecco / sparkling</option>
-                <option>Cider</option>
-                <option>Non-alcoholic (sparkling water/soft)</option>
-                <option>Non-alcoholic (NA beer/NA cocktails)</option>
-                <option>Spirits (shared bottle)</option>
-                <option>Mixers (tonic/ginger/cola)</option>
-                <option>Other (describe below)</option>
+                <option>Dessert </option>
+                <option>Dessert (ich hörte, ihr mögt Tiramisu) </option>
+                <option>Ein richtig extravagantes Desser, das ihr euch nicht mal vorstellen könnt</option>
+                <option>Bier</option>
+                <option>Harter Alkohol für Drinks (oder Shots für alle U30)</option>
+                <option>Wein</option>
+                <option>Bar, aber lasst euch überraschen)</option>
               </select>
             </div>
             <div>
-              <label for="drink_amount">How much?</label>
-              <input id="drink_amount" name="drink_amount" required placeholder="e.g., 6 beers / 2 bottles / 1 bottle + mixer" />
+              <label for="drink_amount">Was ich dazu noch sagen will</label>
+              <input id="drink_amount" name="drink_amount" required placeholder="ihr seid die Besten und es wird einfach grandios" />
             </div>
           </div>
 
           <div>
-            <label for="diet">Dietary notes / allergies (optional)</label>
-            <textarea id="diet" name="dietary_notes" placeholder="e.g., vegetarian, gluten-free, nut allergy"></textarea>
+            <label for="diet">Allergien</label>
+            <textarea id="diet" name="dietary_notes" placeholder="vegetarisch, laktoseintolerant, Allergie auf mühsame Menschen></textarea>
           </div>
 
-          <div>
-            <label for="notes">Anything else? (arrival time, overnight plans, song requests)</label>
-            <textarea id="notes" name="notes" placeholder="Write any notes here…"></textarea>
-          </div>
-
-          <button class="btn" type="submit">Send RSVP</button>
+          <button class="btn" type="submit">Abschicken</button>
           <div class="small" style="margin-top:8px;">
-            Used only for planning. If your plan changes, submit again.
+            Wir brauchen das nur zum ungefähren Planen, wenn ihr euch umentscheidet - no judgement. 
           </div>
         </form>
       </section>
