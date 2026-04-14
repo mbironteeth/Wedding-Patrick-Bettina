@@ -453,6 +453,70 @@
 @keyframes sparkleDrift{
   from{transform:translateY(0);}
   to{transform:translateY(-120px);}
+
+  /* ===== PASSWORD GATE ===== */
+
+#gate{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(201,162,77,.25), transparent 70%),
+    linear-gradient(180deg, #1f2a24, #2e3b33);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.gate-box{
+  text-align:center;
+  padding:40px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(201,162,77,.4);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  max-width:400px;
+}
+
+.gate-box h1{
+  font-family:var(--lotr);
+  font-size:36px;
+  margin-bottom:10px;
+  color:#e7cf8a;
+}
+
+.gate-text{
+  font-family:var(--story);
+  color:#d8d2c2;
+  margin-bottom:20px;
+}
+
+#pw{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:12px;
+  text-align:center;
+  font-size:16px;
+}
+
+.gate-box button{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:linear-gradient(180deg, #e7cf8a, #c9a24d);
+  font-family:var(--lotr);
+  cursor:pointer;
+}
+
+.error{
+  margin-top:10px;
+  color:#ffb3b3;
+  font-size:14px;
+}
 }
   </style>
 </head>
@@ -640,69 +704,5 @@ function checkPassword(){
 </script>
 
 
-
-/* ===== PASSWORD GATE ===== */
-
-#gate{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 50% 30%, rgba(201,162,77,.25), transparent 70%),
-    linear-gradient(180deg, #1f2a24, #2e3b33);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-
-.gate-box{
-  text-align:center;
-  padding:40px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(201,162,77,.4);
-  border-radius:20px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-  max-width:400px;
-}
-
-.gate-box h1{
-  font-family:var(--lotr);
-  font-size:36px;
-  margin-bottom:10px;
-  color:#e7cf8a;
-}
-
-.gate-text{
-  font-family:var(--story);
-  color:#d8d2c2;
-  margin-bottom:20px;
-}
-
-#pw{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  margin-bottom:12px;
-  text-align:center;
-  font-size:16px;
-}
-
-.gate-box button{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:none;
-  background:linear-gradient(180deg, #e7cf8a, #c9a24d);
-  font-family:var(--lotr);
-  cursor:pointer;
-}
-
-.error{
-  margin-top:10px;
-  color:#ffb3b3;
-  font-size:14px;
-}
 </body>
 </html>
