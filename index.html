@@ -766,6 +766,42 @@
 .shake{
   animation:shake .3s;
 }
+    .header-images{
+  position:relative;
+}
+
+.header-img{
+  animation: floaty 6s ease-in-out infinite
+  position:absolute;
+  width:110px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  transform:rotate(-4deg);
+  transition:transform .3s ease;
+}
+
+.header-img.left{
+  left:-10px;
+  top:10px;
+}
+
+.header-img.right{
+  right:-10px;
+  top:10px;
+  transform:rotate(4deg);
+}
+
+/* little hover magic */
+.header-img:hover{
+  transform:scale(1.05) rotate(0deg);
+}
+
+/* mobile */
+@media (max-width: 760px){
+  .header-img{
+    width:80px;
+  }
+}
   </style>
 </head>
 
@@ -804,8 +840,10 @@
       <div class="kicker">A Wedding Gathering</div>
 
       <!-- header avatars -->
-      <div class="avatar a-toast av-left" aria-hidden="true"></div>
-      <div class="avatar a-dance av-right" aria-hidden="true"></div>
+      <div class="header-images">
+  <img src="dancing_comic.png" class="header-img left" alt="fun couple" />
+  <img src="drinking_comic.png" class="header-img right" alt="fun couple" />
+</div>
 
       <h1>Bettina &amp; Patrick</h1>
       <p class="subtitle">
