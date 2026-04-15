@@ -518,6 +518,254 @@
   font-size:14px;
 }
 }
+/* ===== ELVEN DOOR GATE ===== */
+
+#gate{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(210,180,100,.12), transparent 45%),
+    linear-gradient(180deg, #172019, #243127 55%, #1a241d);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  z-index:9999;
+}
+
+/* soft magic behind doors */
+.door-glow{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,230,170,.18), transparent 38%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.08), transparent 18%);
+  opacity:.8;
+  pointer-events:none;
+}
+
+/* center seam glow */
+.gate-center-glow{
+  position:absolute;
+  top:10%;
+  bottom:10%;
+  left:50%;
+  width:4px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(240,220,170,.0) 10%,
+    rgba(240,220,170,.8) 50%,
+    rgba(240,220,170,.0) 90%,
+    transparent 100%);
+  filter:blur(4px);
+  opacity:.6;
+  z-index:2;
+  transition:opacity .6s ease;
+}
+
+/* doors */
+.door{
+  position:absolute;
+  top:0;
+  width:50.5%;
+  height:100%;
+  z-index:1;
+  transition:transform 1.6s ease-in-out, box-shadow 1.6s ease-in-out;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+    linear-gradient(180deg, #2a332c, #1a211c 58%, #141a15);
+  border:1px solid rgba(231,207,138,.16);
+}
+
+/* elvish linework outer frame */
+.door::before{
+  content:"";
+  position:absolute;
+  inset:6% 7%;
+  border:1px solid rgba(231,207,138,.22);
+  border-radius:22px;
+  opacity:.9;
+}
+
+/* tall arch line */
+.door::after{
+  content:"";
+  position:absolute;
+  left:18%;
+  right:18%;
+  top:14%;
+  bottom:10%;
+  border:1px solid rgba(231,207,138,.12);
+  border-radius:200px 200px 24px 24px;
+  opacity:.7;
+}
+
+/* extra decorative runic-ish lines */
+.door-left{
+  left:0;
+  box-shadow: inset -22px 0 40px rgba(0,0,0,.35);
+}
+
+.door-right{
+  right:0;
+  box-shadow: inset 22px 0 40px rgba(0,0,0,.35);
+}
+
+.door-left .rune,
+.door-right .rune{
+  display:none;
+}
+
+/* little decorative stars / elven flourishes */
+.door-left,
+.door-right{
+  background-image:
+    radial-gradient(circle at 50% 14%, rgba(231,207,138,.15) 1px, transparent 2px),
+    radial-gradient(circle at 52% 18%, rgba(231,207,138,.08) 1px, transparent 2px),
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+    linear-gradient(180deg, #2a332c, #1a211c 58%, #141a15);
+  background-size:auto, auto, auto, auto;
+}
+
+/* opening animation state */
+#gate.open .door-left{
+  transform:translateX(-102%);
+}
+
+#gate.open .door-right{
+  transform:translateX(102%);
+}
+
+#gate.open .gate-center-glow{
+  opacity:1;
+}
+
+/* gate text box */
+.gate-box{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  padding:40px;
+  width:min(420px, 88vw);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(231,207,138,.25);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+  transition:opacity .45s ease, transform .45s ease;
+}
+
+#gate.open .gate-box{
+  opacity:0;
+  transform:scale(.98);
+}
+
+.gate-box h1{
+  font-family:var(--lotr);
+  font-size:clamp(30px, 5vw, 44px);
+  margin:0 0 12px;
+  color:#e7cf8a;
+  text-shadow:0 0 18px rgba(231,207,138,.12);
+}
+
+.gate-text{
+  font-family:var(--story);
+  color:#e6dcc7;
+  margin-bottom:20px;
+  font-size:18px;
+  line-height:1.4;
+}
+
+#pw{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(231,207,138,.24);
+  background:rgba(255,255,255,.92);
+  color:#223028;
+  margin-bottom:12px;
+  text-align:center;
+  font-size:16px;
+  outline:none;
+}
+
+#pw:focus{
+  border-color:rgba(231,207,138,.8);
+  box-shadow:0 0 0 4px rgba(231,207,138,.16);
+}
+
+.gate-box button{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:linear-gradient(180deg, #ecd79d, #c9a24d);
+  font-family:var(--lotr);
+  font-size:16px;
+  color:#2f2414;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+
+.gate-box button:hover{
+  filter:brightness(1.04);
+}
+
+.error{
+  margin-top:10px;
+  color:#ffb8b8;
+  font-size:14px;
+}
+
+/* sparkle overlay */
+#gate .sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(255,240,190,.85);
+  box-shadow:0 0 12px rgba(255,240,190,.8);
+  opacity:0;
+  pointer-events:none;
+  z-index:2;
+  animation:sparkFloat 5s linear infinite;
+}
+
+#gate .sparkle.s1{ left:46%; top:30%; animation-delay:0s; }
+#gate .sparkle.s2{ left:54%; top:36%; animation-delay:1.2s; }
+#gate .sparkle.s3{ left:49%; top:54%; animation-delay:2.1s; }
+#gate .sparkle.s4{ left:52%; top:64%; animation-delay:3.4s; }
+
+@keyframes sparkFloat{
+  0%{
+    transform:translateY(12px) scale(.7);
+    opacity:0;
+  }
+  15%{
+    opacity:.7;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-32px) scale(1.1);
+    opacity:0;
+  }
+}
+
+/* wrong password shake */
+@keyframes shake {
+  0%{ transform:translateX(0); }
+  25%{ transform:translateX(-5px); }
+  50%{ transform:translateX(5px); }
+  75%{ transform:translateX(-5px); }
+  100%{ transform:translateX(0); }
+}
+
+.shake{
+  animation:shake .3s;
+}
   </style>
 </head>
 
@@ -525,10 +773,22 @@
   <body>
 
 <div id="gate">
+  <div class="door-glow"></div>
+
+  <div class="door door-left"></div>
+  <div class="door door-right"></div>
+
+  <div class="gate-center-glow"></div>
+  <div class="sparkle s1"></div>
+<div class="sparkle s2"></div>
+<div class="sparkle s3"></div>
+<div class="sparkle s4"></div>
+
   <div class="gate-box">
-    <h1>Speak Friend and Enter</h1>
+    <h1>Speak Friend &amp; Enter</h1>
     <p class="gate-text">
       Only those invited to the gathering may pass.<br>
+      Whisper the secret word…
     </p>
 
     <input type="password" id="pw" placeholder="Secret word..." />
@@ -692,15 +952,38 @@
 <script>
 function checkPassword(){
   const pw = document.getElementById("pw").value.toLowerCase().trim();
-  const correct = "youshallnotpass"; //
+  const correct = "youshallnotpass!"; // 
 
   if(pw === correct){
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("content").style.display = "block";
+    const gate = document.getElementById("gate");
+    const content = document.getElementById("content");
+
+    content.style.display = "block";
+    gate.classList.add("open");
+
+    setTimeout(() => {
+      gate.style.display = "none";
+    }, 1600);
   } else {
-    document.getElementById("error").innerText = "The gates remain closed… try again.";
+    const error = document.getElementById("error");
+    error.innerText = "You shall not pass. (wrong password babe)";
+
+    const box = document.querySelector(".gate-box");
+    box.classList.add("shake");
+    setTimeout(() => box.classList.remove("shake"), 300);
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("pw");
+  if(input){
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        checkPassword();
+      }
+    });
+  }
+});
 </script>
 
 
