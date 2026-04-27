@@ -948,18 +948,17 @@
             </div>
           </div>
 
-          <div class="row">
-            <div>
-              <label for="drink_type">Wer mag uns beim Notwendigen aushelfen?</label>
-              <select id="drink_type" name="drink_type" required>
-                <option value="" disabled selected>Auswählen…</option>
-                <option>Dessert für Dessertbuffet </option>
-                <option>Pastasauce für den Abend </option>
-                <option>Nespresso-Kaffeemaschine</option>
-                <option>Liegestühle oder Sitzsäcke </option>
-                <option>-</option>
-              </select>
+          
+        <div>
+          <label>Wer mag uns beim Notwendigen aushelfen?</label><br>
 
+<label><input type="checkbox" name="drink_type[]" value="Dessert"> Dessert für Dessertbuffet</label><br>
+<label><input type="checkbox" name="drink_type[]" value="Pastasauce"> Pastasauce für den Abend</label><br>
+<label><input type="checkbox" name="drink_type[]" value="Kaffeemaschine"> Nespresso-Kaffeemaschine</label><br>
+<label><input type="checkbox" name="drink_type[]" value="Liegestühle"> Liegestühle oder Sitzsäcke</label><br>
+
+          <div class="row">
+            
           <div>
             <label for="diet">Allergien und Essgewohnheiten (vegetarisch, vegan)</label>
             <textarea id="diet" name="dietary_notes" placeholder="..."></textarea>
